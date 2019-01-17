@@ -46,3 +46,9 @@ Args:
   <command>  The command to be executed.
 
 ```
+
+## Examples
+
+```
+$ watch kubectl -n foobar get pods
+```
