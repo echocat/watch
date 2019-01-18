@@ -31,6 +31,7 @@ Flags:
   -c, --colored=auto             "auto" - Will decide the best option | "always"
                                  - Will always use colors | "never" - Will never
                                  use colors
+      --version                  Will print information about this version.
   -h, --header=[{{.Now}}] Execute [{{.Command}}] every {{.Interval}}
 
                                  Will print a header what will be executed. If
@@ -44,7 +45,6 @@ Flags:
 
 Args:
   <command>  The command to be executed.
-
 ```
 
 ## Examples
