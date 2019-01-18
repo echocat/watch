@@ -24,7 +24,7 @@ jobs:
         - go test -v ./...
 
         - export LDFLAGS="-X main.version=TEST${TRAVIS_BRANCH}TEST -X main.revision=TEST${TRAVIS_COMMIT}TEST -X main.built=`date -u +%Y-%m-%dT%H:%M:%SZ`"
-        - GOOS=linux   GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-linux-amd64       ./main
+        - GOOS=linux   GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-linux-amd64       .
 
         - 'dist/watch-linux-amd64 --version | grep " Version:    TEST${TRAVIS_BRANCH}TEST"'
         - 'dist/watch-linux-amd64 --version | grep " Revision:   TEST${TRAVIS_COMMIT}TEST"'
@@ -36,12 +36,12 @@ jobs:
       script: |
         - export LDFLAGS="-X main.version={TRAVIS_BRANCH} -X main.revision={TRAVIS_COMMIT} -X main.built=`date -u +%Y-%m-%dT%H:%M:%SZ`"
 
-        - GOOS=linux   GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-linux-amd64       ./main
-        - GOOS=linux   GOARCH=386   go build -ldflags "$LDFLAGS" -o dist/watch-linux-386         ./main
-        - GOOS=darwin  GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-darwin-amd64      ./main
-        - GOOS=darwin  GOARCH=386   go build -ldflags "$LDFLAGS" -o dist/watch-darwin-386        ./main
-        - GOOS=windows GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-windows-amd64.exe ./main
-        - GOOS=windows GOARCH=386   go build -ldflags "$LDFLAGS" -o dist/watch-windows-386.exe   ./main
+        - GOOS=linux   GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-linux-amd64       .
+        - GOOS=linux   GOARCH=386   go build -ldflags "$LDFLAGS" -o dist/watch-linux-386         .
+        - GOOS=darwin  GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-darwin-amd64      .
+        - GOOS=darwin  GOARCH=386   go build -ldflags "$LDFLAGS" -o dist/watch-darwin-386        .
+        - GOOS=windows GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-windows-amd64.exe .
+        - GOOS=windows GOARCH=386   go build -ldflags "$LDFLAGS" -o dist/watch-windows-386.exe   .
       deploy:
         provider: releases
         api_key: "$GITHUB_DEPLOY_TOKEN"
