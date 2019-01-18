@@ -6,6 +6,8 @@
 
 ## Install
 
+Either download the latest binary executable from [releases page](https://github.com/echocat/watch/releases/latest) or install master using golang directly:
+
 ```
 $ go get -u github.com/echocat/watch
 ```
