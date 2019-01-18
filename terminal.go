@@ -13,17 +13,21 @@ var (
 		Short('c').
 		Default("auto").
 		Enum("always", "auto", "never")
-	terminalOutput io.Writer = os.Stderr
+	baseTerminalOutput io.Writer = os.Stdout
+	terminalOutput     io.Writer = os.Stderr
 )
 
 func initTerminal() {
+	baseTerminalOutput = colorable.NewColorable(os.Stdout)
 	terminalOutput = colorable.NewColorable(os.Stderr)
 }
 
 func resetTerminal() {
 	switch *colored {
 	case "auto", "always":
-		mustFprint(terminalOutput, "\u001b[2J\u001b[1;1H")
+		const clear = "\u001b[2J\u001b[1;1H"
+		mustFprint(baseTerminalOutput, clear)
+		mustFprint(terminalOutput, clear)
 	}
 }
 
