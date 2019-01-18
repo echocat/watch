@@ -1,7 +1,6 @@
 # watch
 
-[![Build Status](https://travis-ci.org/echocat/watch?branch=master)](https://travis-ci.org/levertonai/kubor)
-
+[![Build Status](https://travis-ci.org/echocat/watch.svg?branch=master)](https://travis-ci.org/echocat/watch)
 
 > Like the unix one but works cross-platform without magic.
 
