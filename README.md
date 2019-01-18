@@ -1,5 +1,8 @@
 # watch
 
+[![Build Status](https://travis-ci.org/echocat/watch?branch=master)](https://travis-ci.org/levertonai/kubor)
+
+
 > Like the unix one but works cross-platform without magic.
 
 ## Install
