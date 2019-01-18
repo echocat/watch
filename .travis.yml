@@ -33,7 +33,7 @@ jobs:
       if: tag =~ ^v\d+\.\d+\.\d+|snapshot-.+$
       before_script:
         - mkdir -p dist
-      script: |
+      script:
         - export LDFLAGS="-X main.version=${TRAVIS_BRANCH} -X main.revision=${TRAVIS_COMMIT} -X main.built=`date -u +%Y-%m-%dT%H:%M:%SZ`"
 
         - GOOS=linux   GOARCH=amd64 go build -ldflags "$LDFLAGS" -o dist/watch-linux-amd64       .
