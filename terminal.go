@@ -25,7 +25,7 @@ func initTerminal() {
 func resetTerminal() {
 	switch *colored {
 	case "auto", "always":
-		const clear = "\u001b[2J\u001b[1;1H"
+		const clear = "\u001b[1;1H\u001b[2J\u001b[1;1H"
 		mustFprint(baseTerminalOutput, clear)
 		mustFprint(terminalOutput, clear)
 	}
