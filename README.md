@@ -5,7 +5,7 @@
 ## Install
 
 ```
-$ go get -u github.com/echocat/watch
+$ go install github.com/echocat/watch@latest
 ```
 
 ## Usage

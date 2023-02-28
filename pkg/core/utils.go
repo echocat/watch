@@ -1,4 +1,4 @@
-package main
+package watch
 
 import (
 	"fmt"
@@ -12,10 +12,6 @@ func must(err error) {
 	}
 }
 
-func mustFprintf(w io.Writer, format string, args ...interface{}) {
-	mustFprint(w, fmt.Sprintf(format, args...))
-}
-
 func mustFprint(w io.Writer, args ...interface{}) {
 	aa := make([][]byte, len(args))
 	for i, arg := range args {
@@ -23,10 +19,6 @@ func mustFprint(w io.Writer, args ...interface{}) {
 	}
 	_, err := fmt.Fprint(w, args...)
 	must(err)
-}
-
-func warn(pattern string, args ...interface{}) {
-	mustFprint(os.Stderr, "[WARNING] "+fmt.Sprintf(pattern, args...))
 }
 
 func fatal(pattern string, args ...interface{}) {
