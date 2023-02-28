@@ -21,9 +21,9 @@ jobs:
           go mod download
 
       - name: Build
-        run:
-          - 'export LDFLAGS="-X main.version=TEST${GITHUB_REF_NAME}TEST -X main.revision=TEST${GITHUB_SHA}TEST -X main.built=`date -u +%Y-%m-%dT%H:%M:%SZ`"'
-          - 'go build -ldflags "$LDFLAGS" -o dist/watch-linux-amd64 .'
-          - 'dist/watch-linux-amd64 --version | grep " Version:    TEST${GITHUB_REF_NAME}TEST"'
-          - 'dist/watch-linux-amd64 --version | grep " Revision:   TEST${GITHUB_SHA}TEST"'
-          - go test -v ./...
+        run: |
+          export LDFLAGS="-X main.version=TEST${GITHUB_REF_NAME}TEST -X main.revision=TEST${GITHUB_SHA}TEST -X main.built=`date -u +%Y-%m-%dT%H:%M:%SZ`"
+          go build -ldflags "$LDFLAGS" -o dist/watch-linux-amd64 .
+          dist/watch-linux-amd64 --version | grep " Version:    TEST${GITHUB_REF_NAME}TEST"
+          dist/watch-linux-amd64 --version | grep " Revision:   TEST${GITHUB_SHA}TEST"
+          go test -v ./...
