@@ -1,53 +1,33 @@
 package main
 
 import (
+	"fmt"
 	"github.com/alecthomas/kingpin"
+	"github.com/echocat/watch/pkg/core"
 	"os"
-	"time"
 )
 
 var (
-	app = kingpin.New("watch", "Like the unix one but works cross-platform without magic.").
-		Interspersed(false)
-
-	interval = app.Flag("interval", "Execute every n duration.").
-			Short('n').
-			Default("5s").
-			Duration()
-	resetTerminalBeforeEachRun = app.Flag("resetTerminal", "If enabled before each execution the terminal will be reset.").
-					Short('r').
-					Default("true").
-					Bool()
+	version  = "development"
+	revision = ""
+	built    = ""
 )
 
 func main() {
-	kingpin.MustParse(app.Parse(os.Args[1:]))
-	initTerminal()
+	app := kingpin.New("watch", "Like the unix one but works cross-platform without magic.").
+		Interspersed(false)
+	app.ErrorWriter(os.Stderr)
 
-	for {
-		run()
-		time.Sleep(*interval)
+	w, err := watch.NewWatch(version, revision, built)
+	if err != nil {
+		app.Fatalf("%v\n", err)
 	}
-}
 
-func run() {
-	if *resetTerminalBeforeEachRun {
-		resetTerminal()
-	}
-	printHeader()
-	command.execute()
-	printFooter()
-	exitIfRequired()
-}
-func exitIfRequired() {
-	if len(*exitCodes) == 0 {
-		return
-	}
-	exitCode := command.ExitCode()
-	if !intSliceContains(*exitCodes, exitCode) {
-		if exitCode < 0 {
-			exitCode = exitCode * -1
-		}
-		os.Exit(exitCode)
+	w.ConfigureCli(app)
+
+	if _, err := app.Parse(os.Args[1:]); err != nil {
+		_, _ = fmt.Fprintf(os.Stderr, "error: %v\n", err)
+		app.Usage(nil)
+		os.Exit(1)
 	}
 }
