@@ -30,11 +30,3 @@ jobs:
       - name: Tests
         run: |
           go test -v ./...
-
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v4.2.0
-        with:
-          version: latest
-          args: release --clean --snapshot
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
