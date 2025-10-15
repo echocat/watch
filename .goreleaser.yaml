@@ -52,3 +52,7 @@ winget:
       pull_request:
         enabled: true
         draft: false
+        base:
+          owner: microsoft
+          name: winget-pkgs
+          branch: master
