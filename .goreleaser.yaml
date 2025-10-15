@@ -17,6 +17,8 @@ builds:
       - '386'
       - arm
       - arm64
+    goarm:
+      - '6'
     ignore:
       - goos: darwin
         goarch: '386'
@@ -25,8 +27,9 @@ builds:
       - goos: windows
         goarch: 'arm'
     binary: '{{ .ProjectName }}'
+    main: .
 archives:
-  - format: binary
+  - formats: [ binary ]
     name_template: '{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}'
 checksum:
   algorithm: sha256
@@ -49,4 +52,3 @@ winget:
       pull_request:
         enabled: true
         draft: false
-        check_boxes: true
