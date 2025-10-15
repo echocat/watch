@@ -2,9 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/alecthomas/kingpin"
-	"github.com/echocat/watch/pkg/core"
 	"os"
+
+	"github.com/alecthomas/kingpin"
+
+	"github.com/echocat/watch/pkg/core"
 )
 
 var (

@@ -33,7 +33,6 @@ Flags:
                                  use colors
       --version                  Will print information about this version.
   -h, --header=[{{.Now}}] Execute [{{.Command}}] every {{.Interval}}
-
                                  Will print a header what will be executed. If
                                  empty no header will be displayed. See:
                                  https://golang.org/pkg/text/template/
