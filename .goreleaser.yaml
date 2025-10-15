@@ -37,14 +37,21 @@ winget:
   - name: watch
     publisher: echocat
     short_description: "Like the unix one but works cross-platform without magic. 😄"
-    privacy_url: https://echocat.org
-    license: MIT
+    publisher_url: https://echocat.org
+    homepage: https://github.com/echocat/watch
     package_identifier: echocat.watch
     commit_author:
       name: echocat-bot
       email: 16277609+echocatbot@users.noreply.github.com
     commit_msg_template: 'chore: release {{.PackageIdentifier}} {{.Tag}}'
     release_notes_url: https://github.com/echocat/watch/releases/tag/{{.Tag}}
+    publisher_support_url: https://github.com/echocat/watch/issues
+    license: MIT
+    license_url: https://github.com/echocat/watch/blob/HEAD/LICENSE
+    tags:
+      - cli
+      - shell
+      - timing
     repository:
       owner: echocat
       name: winget-pkgs
