@@ -4,7 +4,7 @@ go 1.25
 
 require (
 	github.com/alecthomas/kingpin v2.2.6+incompatible
-	github.com/mattn/go-colorable v0.1.15
+	github.com/mattn/go-colorable v0.1.16
 )
 
 require (
